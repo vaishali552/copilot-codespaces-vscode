@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever With You 💖</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#ff4e50,#fc913a,#ff758c,#ff7eb3);
+    background-size:400% 400%;
+    animation:gradient 10s ease infinite;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    width:90%;
+    max-width:420px;
+    padding:40px;
+    text-align:center;
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    color:white;
+    position:relative;
+    z-index:2;
+    transition:0.5s ease;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+.buttons{
+    position:relative;
+    height:130px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    position:absolute;
+    transition:0.3s ease;
+}
+
+#yes{
+    background:white;
+    color:#ff4e50;
+    left:25%;
+}
+
+#yes:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:black;
+    color:white;
+    left:55%;
+}
+
+.message{
+    margin-top:20px;
+    font-size:18px;
+    display:none;
+}
+
+/* Surprise Section */
+.surprise{
+    display:none;
+    animation:fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+.hug-img{
+    width:260px;
+    margin-top:20px;
+    border-radius:20px;
+    animation:float 3s ease-in-out infinite alternate;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-15px);}
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    animation:rise 6s linear infinite;
+}
+
+@keyframes rise{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1 id="mainTitle">Will You Be Mine Forever? 💍</h1>
+
+    <div class="buttons" id="buttonSection">
+        <button id="yes" onclick="showSurprise()">Yes 💖</button>
+        <button id="no" onmouseover="escape()">No 😅</button>
+    </div>
+
+    <div class="message" id="msg">
+        You just unlocked infinite happiness ❤️✨
+    </div>
+
+    <div class="surprise" id="surpriseSection">
+        <h2>Happy Valentine's Day 💖</h2>
+        <p>You are my forever person ❤️</p>
+        <img class="hug-img" src="hug.png" alt="Hug Image">
+    </div>
+</div>
+
+<script>
+
+/* Escape No Button */
+function escape(){
+    let btn=document.getElementById("no");
+    btn.style.left=Math.random()*250+"px";
+    btn.style.top=Math.random()*80+"px";
+}
+
+/* Show Surprise */
+function showSurprise(){
+    document.getElementById("buttonSection").style.display="none";
+    document.getElementById("msg").style.display="block";
+    document.getElementById("surpriseSection").style.display="block";
+    document.getElementById("mainTitle").innerHTML="Yayyy 💖";
+    startHearts();
+}
+
+/* Floating Hearts */
+function startHearts(){
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(Math.random()*20+15)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    },500);
+}
+
+</script>
+
+</body>
+</html>
